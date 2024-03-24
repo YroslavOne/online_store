@@ -3,14 +3,19 @@ import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import styles from './Layout.module.css';
 import cn from 'classnames';
-import { useDispatch } from 'react-redux';
-import { AppDispath } from '../../store/store';
-import { userActions } from '../../store/user.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispath, RootState } from '../../store/store';
+import { getProfile, userActions } from '../../store/user.slice';
 
 export function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch<AppDispath>();
+  const profile = useSelector((s: RootState) => s.user.profile);
+
+  useEffect(() => {
+    dispatch(getProfile());
+  }, [dispatch]);
 
   const logout = () => {
     dispatch(userActions.logout());
@@ -26,8 +31,8 @@ export function Layout() {
       <div className={styles['sidebar']}>
         <div className={styles['user']}>
           <img src="/avatar.png" alt="" />
-          <div className={styles['name']}>Ярослав Берилло</div>
-          <div className={styles['email']}>yaroslavB@gmail.com</div>
+          <div className={styles['name']}>{profile?.name}</div>
+          <div className={styles['email']}>{profile?.email}</div>
         </div>
         <div className={styles['menu']}>
           <NavLink
