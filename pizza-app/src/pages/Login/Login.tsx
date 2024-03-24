@@ -1,11 +1,13 @@
-import { FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { FormEvent, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Headling from '../../components/Headling/Headling';
 import Input from '../../components/Input/Input';
-import { PREFIX } from '../../helpers/API';
 import style from './Login.module.css';
-import axios, { AxiosError } from 'axios';
+import { LoginResponse } from '../../interfaces/auth.interface';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispath, RootState } from '../../store/store';
+import { login, userActions } from '../../store/user.slice';
 
 export type LoginForm = {
   email: {
@@ -17,35 +19,34 @@ export type LoginForm = {
 };
 
 export function Login() {
-  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispath>();
+  const { jwt, loginErrorMassage } = useSelector((s: RootState) => s.user);
+
+  useEffect(() => {
+    if (jwt) {
+      navigate('/');
+    }
+  }, [jwt, navigate]);
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
+    dispatch(userActions.cleanLoginError());
     const target = e.target as typeof e.target & LoginForm;
     const [email, password] = target;
     sendLogin(email.value, password.value);
   };
 
   const sendLogin = async (email: string, password: string) => {
-    try {
-      setError(null);
-
-      const { data } = await axios.post(`${PREFIX}/auth/login`, {
-        email,
-        password,
-      });
-      console.log(data);
-    } catch (e) {
-      if (e instanceof AxiosError) {
-        setError(e.response?.data.message);
-      }
-    }
+    dispatch(login({ email, password }));
   };
 
   return (
     <div className={style['login']}>
       <Headling>Вход</Headling>
-      {error && <div className={style['error']}>{error}</div>}
+      {loginErrorMassage && (
+        <div className={style['error']}>{loginErrorMassage}</div>
+      )}
       <form className={style['form']} onSubmit={submit}>
         <div className={style['field']}>
           <label className={style['']} htmlFor="email">

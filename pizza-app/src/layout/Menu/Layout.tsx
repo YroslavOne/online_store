@@ -1,11 +1,21 @@
 import { useEffect } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import styles from './Layout.module.css';
 import cn from 'classnames';
+import { useDispatch } from 'react-redux';
+import { AppDispath } from '../../store/store';
+import { userActions } from '../../store/user.slice';
 
 export function Layout() {
+  const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch<AppDispath>();
+
+  const logout = () => {
+    dispatch(userActions.logout());
+    navigate('/auth/login');
+  };
 
   useEffect(() => {
     console.log('location');
@@ -43,7 +53,7 @@ export function Layout() {
             Cart
           </NavLink>
         </div>
-        <Button className={styles['exit']}>
+        <Button onClick={logout} className={styles['exit']}>
           <img src="/exit-icon.png" alt="" />
           Выход
         </Button>
