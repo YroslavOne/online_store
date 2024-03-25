@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import Headling from '../../components/Headling/Headling';
 import Search from '../../components/Search/Search';
 import { PREFIX } from '../../helpers/API';
@@ -8,47 +8,63 @@ import styles from './Menu.module.css';
 import { MenuList } from './MenuList/MenuList';
 
 function Menu() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | undefined>(undefined);
+	const [products, setProducts] = useState<Product[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [error, setError] = useState<string | undefined>(undefined);
+	const [filter, setFilter] = useState<string>();
 
-  const getMenu = async () => {
-    try {
-      await new Promise<void>((resolve) => {
-        setIsLoading(true);
-        resolve();
-      });
-      const { data } = await axios.get<Product[]>(`${PREFIX}/products`);
-      setProducts(data);
-      setIsLoading(false);
-      setError(undefined);
-    } catch (e) {
-      console.error(e);
-      if (e instanceof AxiosError) {
-        setError(e.message);
-      }
-      setIsLoading(false);
-      return;
-    }
-  };
+	useEffect(() => {
+		getMenu(filter);
+	}, [filter]);
 
-  useEffect(() => {
-    getMenu();
-  }, []);
+	const updateFilter = (e: ChangeEvent<HTMLInputElement>) =>{
+		setFilter(e.target.value);
+	};
 
-  return (
-    <>
-      <div className={styles['head']}>
-        <Headling>MENU</Headling>
-        <Search placeholder="Введите блюдо или состав" />
-      </div>
-      <div>
-        {error && <>{error}</>}
-        {!isLoading && <MenuList products={products} />}
-        {isLoading && <>Загружаем продукты...</>}
-      </div>
-    </>
-  );
+	const getMenu = async (name?: string) => {
+		try {
+			await new Promise<void>((resolve) => {
+				setIsLoading(true);
+				resolve();
+			});
+			const { data } = await axios.get<Product[]>(`${PREFIX}/products`, {
+				params: {
+					name
+				}
+			});
+			setProducts(data);
+			setIsLoading(false);
+			setError(undefined);
+		} catch (e) {
+			console.error(e);
+			if (e instanceof AxiosError) {
+				setError(e.message);
+			}
+			setIsLoading(false);
+			return;
+		}
+	};
+
+
+	
+
+	
+
+	return (
+		<>
+			<div className={styles['head']}>
+				<Headling>MENU</Headling>
+				<Search  placeholder="Введите блюдо или состав" onChange={updateFilter}/>
+			</div>
+			<div>
+				{error && <>{error}</>}
+				{!isLoading && products.length>0 && <MenuList products={products} />}
+				{isLoading && <>Загружаем продукты...</>}
+				{!isLoading && products.length===0 && <>Не найдено блюд по запросу</>}
+
+			</div>
+		</>
+	);
 }
 
 export default Menu;
