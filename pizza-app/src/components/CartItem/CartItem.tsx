@@ -34,9 +34,6 @@ function CartItem(props: CartItemProps){
 					<img src="/remove.png" />
 				</button>
 			</div>
-			
-
-			{/* <img className={styles['img']} src={props.image} /> */}
 		</div>
 	);
 }

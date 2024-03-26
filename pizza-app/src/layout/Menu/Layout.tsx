@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import Button from '../../components/Button/Button';
+import ButtonWithIcon from '../../components/ButtonWithIcon/ButtonWithIcon';
 import styles from './Layout.module.css';
 import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
@@ -60,10 +60,9 @@ export function Layout() {
 					</NavLink>
 					
 				</div>
-				<Button onClick={logout} className={styles['exit']}>
-					<img src="/exit-icon.png" alt="" />
+				<ButtonWithIcon onClick={logout} image="/exit-icon.png">
           Выход
-				</Button>
+				</ButtonWithIcon>
 			</div>
 
 			<div className={styles['content']}>
