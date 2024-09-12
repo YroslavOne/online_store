@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import styles from './ProductCard.module.css';
-import { ProductCardProps } from './ProductCard.props';
-import { useDispatch } from 'react-redux';
-import { cartActions } from '../../store/cart.slice';
+import { Link } from "react-router-dom";
+import styles from "./ProductCard.module.css";
+import { ProductCardProps } from "./ProductCard.props";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cart.slice";
 
 function ProductCard({
   title,
@@ -13,31 +13,31 @@ function ProductCard({
   id,
 }: ProductCardProps) {
   const dispatch = useDispatch();
-  const add = (e: MouseEvent) => {
+  const add = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(cartActions.add(id));
   };
 
   return (
-    <Link to={`/product/${id}`} className={styles['link']}>
-      <div className={styles['card']} key={id}>
-        <div className={styles['head']}>
-          <div className={styles['price']}>
-            {price} <span className={styles['currency']}>₽</span>
+    <Link to={`/product/${id}`} className={styles["link"]}>
+      <div className={styles["card"]} key={id}>
+        <div className={styles["head"]}>
+          <div className={styles["price"]}>
+            {price} <span className={styles["currency"]}>₽</span>
           </div>
-          <button className={styles['add-to-cart']} onClick={add}>
+          <button className={styles["add-to-cart"]} onClick={add}>
             <img src="/cart.png" />
           </button>
 
-          <img className={styles['img']} src={image} />
-          <div className={styles['rating']}>
+          <img className={styles["img"]} src={image} />
+          <div className={styles["rating"]}>
             {rating}
-            <img className={styles['star']} src="/star.png" />
+            <img className={styles["star"]} src="/star.png" />
           </div>
         </div>
-        <div className={styles['footer']}>
-          <div className={styles['title']}>{title}</div>
-          <div className={styles['description']}>{description}</div>
+        <div className={styles["footer"]}>
+          <div className={styles["title"]}>{title}</div>
+          <div className={styles["description"]}>{description}</div>
         </div>
       </div>
     </Link>

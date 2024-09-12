@@ -56,7 +56,7 @@ export function Register() {
           <label className={style['']} htmlFor="email">
             Ваш email
           </label>
-          <Input placeholder="Email" name="email" id="email" />
+          <Input placeholder="Email" name="email" id="email"  type="email"/>
         </div>
         <div className={style['field']}>
           <div className={style['field']}>

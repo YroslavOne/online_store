@@ -48,7 +48,7 @@ export function Login() {
           <label className={style['']} htmlFor="email">
             Ваш email
           </label>
-          <Input placeholder="Email" id="email" />
+          <Input placeholder="Email" id="email" type="email" />
         </div>
         <div className={style['field']}>
           <label htmlFor="password">Ваш пароль</label>

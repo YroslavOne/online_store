@@ -55,18 +55,11 @@ const router = createBrowserRouter([
 							setTimeout(() => {
 								axios
 									.get(`${PREFIX}/products/${params.id}`)
-									.then((data) => resolve(data))
+									.then((response) => resolve(response.data))
 									.catch((e) => reject(e));
 							}, 2000);
 						})
 					});
-					//   data: axios
-					//     .get(`${PREFIX}/products/${params.id}`)
-					//     .then((data) => data),
-					// });
-
-					// const { data } = await axios.get(`${PREFIX}/products/${params.id}`);
-					// return data;
 				}
 			}
 		]
