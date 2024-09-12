@@ -25,7 +25,7 @@ export function Cart() {
 			return;
 		}
 		return i.count*product.price;
-	}).reduce((acc, i)=>acc +=i, 0);
+	}).reduce((acc, i)=>acc += i, 0);
 
 	const checkout = async()=>{
 		 await axios.post(`${PREFIX}/order`, {
