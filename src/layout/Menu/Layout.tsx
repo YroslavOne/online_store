@@ -9,11 +9,32 @@ import { getProfile, userActions } from "../../store/user.slice";
 
 export function Layout() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [smallerWidth, setSmallerWidth] = useState(false)
+  const [width, setWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch<AppDispath>();
   const profile = useSelector((s: RootState) => s.user.profile);
   const items = useSelector((s: RootState) => s.cart.items);
+
+  useEffect(() => {
+    const handleResize = (event) => {
+      setWidth(event.target.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if(width<1000){
+      setSmallerWidth(true)
+    } else{
+      setSmallerWidth(false)
+
+    }
+  }, [width]);
 
   useEffect(() => {
     dispatch(getProfile());
@@ -28,7 +49,6 @@ export function Layout() {
   }, [location]);
 const openMenu = ()=>{
   setMenuOpen(!menuOpen);
-  console.log(menuOpen);
 }
   return (
     <div className={styles["layout"]}>
@@ -37,7 +57,7 @@ const openMenu = ()=>{
         <span></span>
         <span></span>
       </button>
-      <div className={styles["sidebar"]} style={{ display: menuOpen ? 'flex' : 'none' }}>
+      <div style={smallerWidth ? { display: menuOpen ? 'flex' : 'none' } : {}} className={styles["sidebar"]} >
         <div className={styles["user"]}>
           <img src="/online_store/avatar.png" alt="" />
           <div className={styles["name"]}>{profile?.name}</div>

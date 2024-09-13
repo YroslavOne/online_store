@@ -72,6 +72,13 @@ export function Product() {
                     </ul>
                   </div>
                 </div>
+                <ButtonWithIcon
+                  className={styles["button-mob"]}
+                  onClick={() => dispatch(cartActions.add(product.id))}
+                  image="/online_store/cart.png"
+                >
+                  В корзину
+                </ButtonWithIcon>
               </div>
             </div>
           )}
