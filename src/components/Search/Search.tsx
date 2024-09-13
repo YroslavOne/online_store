@@ -16,7 +16,7 @@ const Search = forwardRef<HTMLInputElement, SearchProps>(function Input(
         })}
         {...props}
       />
-      <img className={styles['icon']} src="/search.png" alt="" />
+      <img className={styles['icon']} src="/online_store/search.png" alt="" />
     </div>
   );
 });

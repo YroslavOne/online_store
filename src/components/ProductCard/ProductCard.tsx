@@ -19,20 +19,20 @@ function ProductCard({
   };
 
   return (
-    <Link to={`/product/${id}`} className={styles["link"]}>
+    <Link to={`/online_store/product/${id}`} className={styles["link"]}>
       <div className={styles["card"]} key={id}>
         <div className={styles["head"]}>
           <div className={styles["price"]}>
             {price} <span className={styles["currency"]}>₽</span>
           </div>
           <button className={styles["add-to-cart"]} onClick={add}>
-            <img src="/cart.png" />
+            <img src="/online_store/cart.png" />
           </button>
 
           <img className={styles["img"]} src={image} />
           <div className={styles["rating"]}>
             {rating}
-            <img className={styles["star"]} src="/star.png" />
+            <img className={styles["star"]} src="/online_store/star.png" />
           </div>
         </div>
         <div className={styles["footer"]}>

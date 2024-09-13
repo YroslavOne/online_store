@@ -24,14 +24,14 @@ function CartItem(props: CartItemProps){
 			</div>
 			<div className={styles['actions']}>
 				<button className={styles['minus']} onClick={discrease}>
-					<img src="/minus.svg" />
+					<img src="/online_store/minus.svg" />
 				</button>
 				<div className={styles['number']}>{props.count}</div>
 				<button className={styles['plus']} onClick={increase}>
-					<img src="/plus.svg" />
+					<img src="/online_store/plus.svg" />
 				</button>
 				<button className={styles['remove']} onClick={remove}>
-					<img src="/remove.png" />
+					<img src="/online_store/remove.png" />
 				</button>
 			</div>
 		</div>

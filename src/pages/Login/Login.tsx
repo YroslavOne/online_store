@@ -25,7 +25,7 @@ export function Login() {
 
   useEffect(() => {
     if (jwt) {
-      navigate('/');
+      navigate('/online_store/');
     }
   }, [jwt, navigate]);
 

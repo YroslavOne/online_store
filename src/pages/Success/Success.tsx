@@ -7,9 +7,9 @@ export function Success(){
 
 	return(
 		<div className={styles['success']}>
-			<img src="/pizza.png" alt="" />
+			<img src="/online_store/pizza.png" alt="" />
 			<div className={styles['text']}>Ваш заказ успешно оформлен!</div>
-			<Button onClick={()=>navigate('/')} appearence="big">Сделать новый</Button>
+			<Button onClick={()=>navigate('/online_store/')} appearence="big">Сделать новый</Button>
 		</div>
 	);
 }

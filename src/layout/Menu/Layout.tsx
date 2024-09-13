@@ -30,7 +30,7 @@ export function Layout() {
     <div className={styles["layout"]}>
       <div className={styles["sidebar"]}>
         <div className={styles["user"]}>
-          <img src="/avatar.png" alt="" />
+          <img src="/online_store/avatar.png" alt="" />
           <div className={styles["name"]}>{profile?.name}</div>
           <div className={styles["email"]}>{profile?.email}</div>
         </div>
@@ -54,14 +54,14 @@ export function Layout() {
               })
             }
           >
-            <img src="/cart-icon.png" alt="" />
+            <img src="/online_store/cart-icon.png" alt="" />
             Корзина{" "}
             <span className={styles["cart-count"]}>
               {items.reduce((acc, item) => (acc += item.count), 0)}
             </span>
           </NavLink>
         </div>
-        <ButtonWithIcon onClick={logout} image="/exit-icon.png">
+        <ButtonWithIcon onClick={logout} image="/online_store/exit-icon.png">
           Выход
         </ButtonWithIcon>
       </div>

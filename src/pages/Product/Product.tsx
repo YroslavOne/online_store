@@ -24,14 +24,14 @@ export function Product() {
 										className={styles["arrow"]}
 										onClick={() => navigate("")}
 									>
-										<img src="/arrow.png" alt=""  />
+										<img src="/online_store/arrow.png" alt=""  />
 									</button>
 									<Headling>{data.name} </Headling>
 								</div>
 								<ButtonWithIcon
 									className={styles["button"]}
 									onClick={() => dispatch(cartActions.add(data.id))}
-									image="/cart.png"
+									image="/online_store/cart.png"
 								>
                   В корзину
 								</ButtonWithIcon>
@@ -52,7 +52,7 @@ export function Product() {
 										<div className={styles['container-rating']} >
 											<div className={styles["rating"]}>
 												{data.rating}
-												<img className={styles["star"]} src="/star.png" />
+												<img className={styles["star"]} src="/online_store/star.png" />
 											</div>
 										</div>
 									</div>
