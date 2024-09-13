@@ -5,7 +5,7 @@ export function AuthLayout() {
   return (
     <div className={styles['layout']}>
       <div className={styles['logo']}>
-        <img src="/logo.png" alt="" />
+        <img src="/online_store/logo.png" alt="" />
       </div>
 
       <div className={styles['content']}>

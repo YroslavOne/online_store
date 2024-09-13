@@ -43,7 +43,7 @@ export function Layout() {
               })
             }
           >
-            <img src="/menu-icon.png" alt="" />
+            <img src="/online_store/menu-icon.png" alt="" />
             Меню
           </NavLink>
           <NavLink
