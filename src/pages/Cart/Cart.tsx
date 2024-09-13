@@ -36,7 +36,7 @@ export function Cart() {
 			}
 		});
 		dispatch(cartActions.clean());
-		navigate('/success');
+		navigate('/online_store/success');
 	};
 	const getItem = async(id: number)=>{
 		const { data } = await axios.get<Product>(`${PREFIX}/products/${id}`);

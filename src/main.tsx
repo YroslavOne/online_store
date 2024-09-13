@@ -20,15 +20,16 @@ const Menu = lazy(() => import('./pages/Menu/Menu'));
 
 const router = createBrowserRouter([
 	{
-		path: '/',
+		path: '/online_store/',
 		element: (
+			
 			<RequireAuth>
 				<Layout />
 			</RequireAuth>
 		),
 		children: [
 			{
-				path: '/',
+				path: '',
 				element: (
 					<Suspense fallback={<>Загрузка...</>}>
 						<Menu />
@@ -36,17 +37,17 @@ const router = createBrowserRouter([
 				)
 			},
 			{
-				path: '/success',
+				path: 'success',
 				element: (
 					<Success/>
 				)
 			},
 			{
-				path: '/cart',
+				path: 'cart',
 				element: <Cart />
 			},
 			{
-				path: '/product/:id',
+				path: 'product/:id',
 				element: <Product />,
 				errorElement: <>Ошибка</>,
 				loader: async ({ params }) => {
@@ -65,7 +66,7 @@ const router = createBrowserRouter([
 		]
 	},
 	{
-		path: '/auth',
+		path: '/online_store/auth',
 		element: <AuthLayout />,
 		children: [
 			{

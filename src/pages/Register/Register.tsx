@@ -78,7 +78,7 @@ export function Register() {
 
         <div className={style['links']}>
           <div>Есть акканут?</div>
-          <Link to="/auth/login">Войти</Link>
+          <Link to="/online_store/auth/login">Войти</Link>
         </div>
       </form>
     </div>

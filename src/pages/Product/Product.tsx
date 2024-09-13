@@ -22,7 +22,7 @@ export function Product() {
 								<div className={styles['button-and-title']}>
 									<button
 										className={styles["arrow"]}
-										onClick={() => navigate("/")}
+										onClick={() => navigate("")}
 									>
 										<img src="/arrow.png" alt=""  />
 									</button>

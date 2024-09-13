@@ -58,7 +58,7 @@ export function Login() {
 
         <div className={style['links']}>
           <div>Нет акканута?</div>
-          <Link to="/auth/register">Зарегистрироваться</Link>
+          <Link to="/online_store/auth/register">Зарегистрироваться</Link>
         </div>
       </form>
     </div>
