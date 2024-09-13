@@ -56,7 +56,8 @@ const router = createBrowserRouter([
 							setTimeout(() => {
 								axios
 									.get(`${PREFIX}/products/${params.id}`)
-									.then((response) => resolve(response.data))
+									.then((data) => resolve(data))
+									console.log(data)
 									.catch((e) => reject(e));
 							}, 2000);
 						})
