@@ -4,3 +4,10 @@
 	gap: 40px;
 	margin-top: 30px;
 }
+@media screen and (max-width: 992px) {
+	.wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}

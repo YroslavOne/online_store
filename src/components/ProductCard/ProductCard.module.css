@@ -83,3 +83,6 @@
 .add-to-cart:hover {
 	background: var(--primary-hover-color);
 }
+.img{
+	width: 320px;
+}

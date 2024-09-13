@@ -13,7 +13,7 @@ export function Product() {
   const dispatch = useDispatch();
 
   return (
-    <>
+    <div className={styles["product"]}>
       <Suspense fallback={"Загружаю..."}>
         <Await resolve={data}>
           {(product: ProductType) => (
@@ -22,7 +22,7 @@ export function Product() {
                 <div className={styles["button-and-title"]}>
                   <button
                     className={styles["arrow"]}
-                    onClick={() => navigate("")}
+                    onClick={() => navigate("/online_store/")}
                   >
                     <img src="/online_store/arrow.png" alt="Back" />
                   </button>
@@ -77,6 +77,6 @@ export function Product() {
           )}
         </Await>
       </Suspense>
-    </>
+    </div>
   );
 }

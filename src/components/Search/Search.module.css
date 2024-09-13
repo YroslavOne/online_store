@@ -20,3 +20,8 @@
 	left: 17px;
 	top: 17px;
 }
+@media screen and (max-width: 992px) {
+	.input-wrapper {
+		margin-top: 20px;
+	}
+}

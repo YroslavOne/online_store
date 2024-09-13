@@ -56,7 +56,7 @@ function Menu() {
 				<Headling>MENU</Headling>
 				<Search  placeholder="Введите блюдо или состав" onChange={updateFilter}/>
 			</div>
-			<div>
+			<div className={styles["list-item"]}>
 				{error && <>{error}</>}
 				{!isLoading && products.length>0 && <MenuList products={products} />}
 				{isLoading && <>Загружаем продукты...</>}

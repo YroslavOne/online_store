@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import ButtonWithIcon from "../../components/ButtonWithIcon/ButtonWithIcon";
 import styles from "./Layout.module.css";
@@ -8,6 +8,7 @@ import { AppDispath, RootState } from "../../store/store";
 import { getProfile, userActions } from "../../store/user.slice";
 
 export function Layout() {
+  const [menuOpen, setMenuOpen] = useState(false)
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch<AppDispath>();
@@ -25,10 +26,18 @@ export function Layout() {
 
   useEffect(() => {
   }, [location]);
-
+const openMenu = ()=>{
+  setMenuOpen(!menuOpen);
+  console.log(menuOpen);
+}
   return (
     <div className={styles["layout"]}>
-      <div className={styles["sidebar"]}>
+      <button onClick={openMenu} className={styles["menu-button"]}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div className={styles["sidebar"]} style={{ display: menuOpen ? 'flex' : 'none' }}>
         <div className={styles["user"]}>
           <img src="/online_store/avatar.png" alt="" />
           <div className={styles["name"]}>{profile?.name}</div>
@@ -61,7 +70,7 @@ export function Layout() {
             </span>
           </NavLink>
         </div>
-        <ButtonWithIcon onClick={logout} image="/online_store/exit-icon.png">
+        <ButtonWithIcon className={styles["exit"]} onClick={logout} image="/online_store/exit-icon.png">
           Выход
         </ButtonWithIcon>
       </div>
