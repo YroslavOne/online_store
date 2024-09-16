@@ -22,14 +22,14 @@
 		display: none;
 	}
 	.layout {
-		display: flex;
+		display: block;
 		align-items: center;
 		justify-content: center;
 		min-height: 100vh;
 	}
 	.content {
 		width: 100%;
-		border: 1px solid var(--separator-color);
+		border: none;
 		flex: none;
 		display: flex;
 		align-items: center;

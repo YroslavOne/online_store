@@ -13,3 +13,9 @@ body {
 	font-family: "Open Sans", sans-serif;
 	margin: 0;
 }
+@media screen and (max-width: 992px) {
+	body{
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+}
